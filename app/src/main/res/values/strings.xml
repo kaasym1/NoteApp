@@ -1,0 +1,7 @@
+ <resources>
+        <string name="app_name">NoteApp</string>
+        <string name="onboard_convenient_functionality">Convenient Functionality</string>
+        <string name="onboard_quick_quality_product">Quick and Quality Product</string>
+        <string name="onboard_many_features_and_interesting_features">Many Features and Interesting Capabilities</string>
+        <string name="default_onboard_title">Welcome to NoteApp</string>
+    </resources>
