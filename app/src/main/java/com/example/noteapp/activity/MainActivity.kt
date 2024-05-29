@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.noteapp.R
-import com.example.noteapp.SharedPreferenceHelper
 import com.example.noteapp.databinding.ActivityMainBinding
+import com.example.noteapp.model.SharedPreferenceHelper
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if (!sharedPreferenceHelper.isOnBoardingComplete()) {
             sharedPreferenceHelper.setOnBoardingComplete(true)
         } else {
-            navController.navigate(R.id.noteFragment)
+            navController.navigate(R.id.homeFragment)
         }
     }
 }

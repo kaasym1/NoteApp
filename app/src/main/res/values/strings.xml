@@ -1,7 +1,13 @@
- <resources>
+<resources>
         <string name="app_name">NoteApp</string>
-        <string name="onboard_convenient_functionality">Convenient Functionality</string>
-        <string name="onboard_quick_quality_product">Quick and Quality Product</string>
-        <string name="onboard_many_features_and_interesting_features">Many Features and Interesting Capabilities</string>
-        <string name="default_onboard_title">Welcome to NoteApp</string>
-    </resources>
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="start">Начать работу</string>
+        <string name="skip">Пропустить</string>
+        <string name="title_activity_main">MainActivity</string>
+        <string name="note">Заметки</string>
+        <string name="plus">+</string>
+        <string name="search">Поиск заметок</string>
+        <string name="finish">Готово</string>
+        <string name="title">Название</string>
+        <string name="send"><![CDATA[->]]></string>
+</resources>

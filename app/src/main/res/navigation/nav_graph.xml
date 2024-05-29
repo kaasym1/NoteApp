@@ -3,21 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardFragment">
-
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/noteFragment"
-        android:name="com.example.noteapp.fragments.onboard.note.NoteFragment"
-        android:label="fragment_note"
-        tools:layout="@layout/fragment_note" />
-
+        android:id="@+id/homeFragment"
+        android:name="com.example.noteapp.ui.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/onBoardFragment"
-        android:name="com.example.noteapp.fragments.onboard.OnBoardFragment"
-        android:label="OnBoardFragment" />
+        android:id="@+id/detailFragment"
+        android:name="com.example.noteapp.ui.fragments.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/onBoardViewPagerFragment"
-        android:name="com.example.noteapp.fragments.onboard.OnBoardViewPagerFragment"
-        android:label="OnBoardViewPagerFragment" />
-
+        android:id="@+id/chatFragment"
+        android:name="com.example.noteapp.ui.fragments.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat"/>
 </navigation>
