@@ -2,6 +2,7 @@ package com.example.noteapp.model
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.noteapp.ui.fragments.SingUpFragment
 
 class SharedPreferenceHelper(context: Context) {
 
@@ -25,8 +26,17 @@ class SharedPreferenceHelper(context: Context) {
         return sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)
     }
 
+    fun setSignInComplete(isComplete: Boolean) {
+        sharedPreferences.edit().putBoolean(SIGN_IN_COMPLETE, isComplete).apply()
+    }
+
+    fun isSignInComplete(): Boolean {
+        return sharedPreferences.getBoolean(SIGN_IN_COMPLETE, false)
+    }
+
     companion object {
         val SHOWED = "SHOWED"
         val IS_GRID_LAYOUT = "IS_GRID_LAYOUT"
+        const val SIGN_IN_COMPLETE = "SIGN_IN_COMPLETE"
     }
 }

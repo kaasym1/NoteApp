@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if (!sharedPreferenceHelper.isOnBoardingComplete()) {
             sharedPreferenceHelper.setOnBoardingComplete(true)
         } else {
-            navController.navigate(R.id.homeFragment)
+            navController.navigate(R.id.singUpFragment)
         }
     }
 }

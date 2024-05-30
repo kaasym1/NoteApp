@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/singUpFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.noteapp.ui.fragments.HomeFragment"
@@ -26,8 +26,8 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.example.noteapp.ui.fragments.ChatFragment"
-        android:label="ChatFragment"
-        tools:layout="@layout/fragment_chat"/>
+        android:id="@+id/singUpFragment"
+        android:name="com.example.noteapp.ui.fragments.SingUpFragment"
+        android:label="fragment_sing_up"
+        tools:layout="@layout/fragment_sing_up" />
 </navigation>
