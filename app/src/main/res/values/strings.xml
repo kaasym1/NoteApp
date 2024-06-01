@@ -11,4 +11,7 @@
         <string name="registration_via_google">Регистрация через Google</string>
         <string name="registration">Регистрация</string>
         <string name="sign_in_google">Войти через Google</string>
+        <string name="navigation_drawer_open">.\n</string>
+        <string name="navigation_drawer_close">.</string>
+        <string name="new_chat">New Chat</string>
 </resources>

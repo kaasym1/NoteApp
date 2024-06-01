@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,6 +24,8 @@ class HomeFragment : Fragment(), OnClick {
     private var isGridLayout: Boolean = false
     private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
     private var flag = true
+    private lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +42,7 @@ class HomeFragment : Fragment(), OnClick {
         initialize()
         setUpListeners()
         getData()
+        setupDrawer()
     }
 
     private fun initialize() {
@@ -63,7 +67,7 @@ class HomeFragment : Fragment(), OnClick {
                 sharedPreferenceHelper.setIsGridLayout(isGridLayout)
                 flag = false
             } else {
-                gridLayout.setImageResource(R.drawable.ic_menu)
+                gridLayout.setImageResource(R.drawable.ic_men)
                 binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())
                 sharedPreferenceHelper.setIsGridLayout(isGridLayout)
                 flag = true
@@ -75,6 +79,33 @@ class HomeFragment : Fragment(), OnClick {
     private fun getData() {
         App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
+        }
+    }
+
+    override fun setupDrawer() {
+        val drawerLayout = binding.drawerLayout
+        val navView = binding.navView
+        toggle = ActionBarDrawerToggle(
+            activity,
+            drawerLayout,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        binding.men.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.homeFragment -> {
+                    findNavController().navigate(R.id.chatFragment)
+                }
+            }
+            drawerLayout.closeDrawer(navView)
+            true
         }
     }
 
