@@ -64,20 +64,19 @@ class HomeFragment : Fragment(), OnClick {
             if (flag) {
                 gridLayout.setImageResource(R.drawable.ic_shape2)
                 binding.rvNotes.layoutManager = GridLayoutManager(requireContext(), 2)
-                sharedPreferenceHelper.setIsGridLayout(isGridLayout)
+                sharedPreferenceHelper.setIsGridLayout(true)
                 flag = false
             } else {
                 gridLayout.setImageResource(R.drawable.ic_men)
                 binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())
-                sharedPreferenceHelper.setIsGridLayout(isGridLayout)
+                sharedPreferenceHelper.setIsGridLayout(false)
                 flag = true
             }
         }
-
     }
 
     private fun getData() {
-        App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner) {
+        App.getInstance(requireContext()).noteDao().getAll().observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
         }
     }
@@ -114,7 +113,7 @@ class HomeFragment : Fragment(), OnClick {
         with(builder) {
             setTitle("Вы точно хотите удалить эту заметку?")
             setPositiveButton("Да") { _, _ ->
-                App().getInstance()?.noteDao()?.deleteNote(noteModel)
+                App.getInstance(requireContext()).noteDao().deleteNote(noteModel)
             }
             setNegativeButton("Нет") { dialog, _ ->
                 dialog.cancel()
