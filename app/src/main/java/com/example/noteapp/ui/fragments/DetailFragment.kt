@@ -1,7 +1,5 @@
 package com.example.noteapp.ui.fragments
 
-import android.app.AlertDialog
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -10,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.noteapp.databinding.FragmentDetailBinding
@@ -20,7 +16,6 @@ import com.example.noteapp.R
 import com.example.noteapp.models.NoteModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import android.Manifest
 
 class DetailFragment : Fragment() {
 
@@ -42,7 +37,6 @@ class DetailFragment : Fragment() {
         update()
         setUpListeners()
         displayCurrentDateTime()
-        requestNotificationPermission()
     }
 
     private fun update() {
@@ -60,30 +54,6 @@ class DetailFragment : Fragment() {
                     R.color.white2 -> binding.rb2.isChecked = true
                     R.color.red -> binding.rb3.isChecked = true
                 }
-            }
-        }
-    }
-
-    private fun requestNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val hasNotificationPermission = ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-            if (!hasNotificationPermission) {
-                val dialog = AlertDialog.Builder(requireContext())
-                    .setTitle("Разрешение на отправку уведомлений")
-                    .setMessage("Разрешить приложению отправлять уведомления?")
-                    .setPositiveButton("Да") { _, _ ->
-                        ActivityCompat.requestPermissions(
-                            requireActivity(),
-                            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                            notificationPermissionCode
-                        )
-                    }
-                    .setNegativeButton("Нет") { dialog, _ -> }
-                    .create()
-                dialog.show()
             }
         }
     }
@@ -155,9 +125,5 @@ class DetailFragment : Fragment() {
         val formattedTime = currentDateTime.format(formatterTime)
         binding.txtDate.text = formattedDate
         binding.txtTime.text = formattedTime
-    }
-
-    companion object {
-        const val notificationPermissionCode = 1001
     }
 }
